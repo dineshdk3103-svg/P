@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Prisha 🖤</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+  height:100vh;
+  background:radial-gradient(circle at top,#1a1a1a,#000);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:'Inter',sans-serif;
+  color:#f5f5f5;
+  overflow:hidden;
+}
+
+.card{
+  background:rgba(255,255,255,0.05);
+  backdrop-filter:blur(20px);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:24px;
+  padding:50px 35px;
+  width:90%;
+  max-width:400px;
+  text-align:center;
+  box-shadow:0 25px 60px rgba(0,0,0,0.7);
+}
+
+h1{
+  font-family:'Playfair Display',serif;
+  font-size:1.9rem;
+  margin-bottom:15px;
+}
+
+.question{
+  font-size:1rem;
+  margin:20px 0;
+  opacity:0.85;
+  line-height:1.6;
+}
+
+.heart{
+  font-size:3rem;
+  margin:15px 0;
+  animation:pulse 2s infinite;
+}
+@keyframes pulse{
+  0%{transform:scale(1)}
+  50%{transform:scale(1.15)}
+  100%{transform:scale(1)}
+}
+
+.buttons{
+  margin-top:25px;
+  display:flex;
+  justify-content:center;
+  gap:15px;
+}
+
+button{
+  padding:10px 25px;
+  border-radius:30px;
+  border:none;
+  font-size:0.9rem;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.yes{
+  background:linear-gradient(135deg,#ff0055,#ff4d6d);
+  color:white;
+}
+
+.yes:hover{
+  transform:translateY(-3px);
+  box-shadow:0 15px 30px rgba(255,0,80,0.4);
+}
+
+.no{
+  background:#222;
+  color:#aaa;
+}
+
+.no:hover{
+  background:#333;
+}
+
+.message{
+  line-height:1.8;
+  font-size:0.95rem;
+  opacity:0.9;
+}
+
+/* Floating hearts after yes */
+.floating-heart{
+  position:absolute;
+  font-size:20px;
+  animation:floatUp 4s linear forwards;
+}
+
+@keyframes floatUp{
+  0%{transform:translateY(0);opacity:1;}
+  100%{transform:translateY(-200px);opacity:0;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="card" id="card">
+  <h1>Prisha 🖤</h1>
+  <div class="heart">❤️</div>
+  <p class="question">
+    Will you be my Valentine?
+  </p>
+
+  <div class="buttons">
+    <button class="yes" onclick="sayYes()">Yes</button>
+    <button class="no" onclick="sayNo()">No</button>
+  </div>
+</div>
+
+<script>
+function sayYes(){
+  document.getElementById("card").innerHTML = `
+    <h1>❤️</h1>
+    <p class="message">
+      You just made my heart smile.<br><br>
+      I promise to make this Valentine’s Day<br>
+      full of laughter, warmth,<br>
+      and little moments we’ll remember.<br><br>
+      Thank you for saying yes, Prisha 💕
+    </p>
+  `;
+
+  // floating hearts effect
+  for(let i=0;i<20;i++){
+    let heart = document.createElement("div");
+    heart.className="floating-heart";
+    heart.innerHTML="❤️";
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.bottom="0";
+    heart.style.fontSize=(15+Math.random()*20)+"px";
+    document.body.appendChild(heart);
+
+    setTimeout(()=>heart.remove(),4000);
+  }
+}
+
+function sayNo(){
+  document.querySelector(".question").innerHTML =
+    "Are you absolutely sure? 🖤";
+}
+</script>
+
+</body>
+</html>
